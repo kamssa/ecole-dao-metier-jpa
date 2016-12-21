@@ -1,20 +1,9 @@
 package ci.kossovo.ecole;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
-
-import ci.kossovo.ecole.entites.Administrateur;
-import ci.kossovo.ecole.entites.Enseignant;
-import ci.kossovo.ecole.entites.Etudiant;
-import ci.kossovo.ecole.entites.Personne;
-import ci.kossovo.ecole.metier.IPersonneMetier;
 
 @SpringBootApplication
 @PropertySource("classpath:application.properties")
