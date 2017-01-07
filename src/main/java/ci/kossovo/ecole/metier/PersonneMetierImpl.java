@@ -20,7 +20,7 @@ public class PersonneMetierImpl implements IPersonneMetier {
 
 	@Override
 	public Personne creer(Personne entity) throws InvalidPersonneException {
-		if ((entity.getNom() == null) || (entity.getPrenom() == null) || (entity.getCni() == null))
+		if ((entity.getNom() == null||entity.getNom()=="") || (entity.getPrenom() == null||entity.getPrenom()=="") || (entity.getCni() == null||entity.getCni()==""))
 			throw new InvalidPersonneException("Le nom, le prenom ou cni ne peut etre null");
 
 		Personne pers = personneRepository.findByCni(entity.getCni());
@@ -31,14 +31,12 @@ public class PersonneMetierImpl implements IPersonneMetier {
 
 	@Override
 	public Personne modifier(Personne entity) throws InvalidPersonneException {
-		Personne p = chercherParId(entity.getId());
+		Personne p = personneRepository.findByCni(entity.getCni());;
 
-		if (p.getCni() != entity.getCni()) {
-			Personne p1 = personneRepository.findByCni(entity.getCni());
+		if (p.getId() != entity.getId()) 
+			throw new InvalidPersonneException("ce identifiant est deja utilise");
 
-			if (p1!= null)
-				throw new InvalidPersonneException("ce identifiant est deja utilise");
-		}
+		
 
 		return personneRepository.save(entity);
 

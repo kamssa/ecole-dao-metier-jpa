@@ -106,7 +106,7 @@ public class PersonneMetierTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		verify(repositoryMock).findOne(p1.getId());
+		
 		verify(repositoryMock, never()).findByCni(p1.getCni());
 		verify(repositoryMock).save(p1);
 		assertThat(p2.getNom()).isEqualTo("Diarra");
@@ -139,7 +139,6 @@ public class PersonneMetierTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		verify(repositoryMock).findOne(4L);
 		verify(repositoryMock).findByCni("A004");
 		verify(repositoryMock,never()).save(modifaApprte);
 		assertThat(p3).isEqualTo(null);
