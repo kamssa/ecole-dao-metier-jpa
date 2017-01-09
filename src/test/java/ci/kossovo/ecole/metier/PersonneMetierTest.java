@@ -92,7 +92,7 @@ public class PersonneMetierTest {
 		Personne p1 = new Personne("Mr", "A003", "Traore", "Abdoulaye");
 		p1.setId(4L);
 
-		given(repositoryMock.findOne(p1.getId())).willReturn(p1);
+		
 		given(repositoryMock.findByCni(p1.getCni())).willReturn(p1);
 
 		p1.setNom("Diarra");
@@ -107,7 +107,7 @@ public class PersonneMetierTest {
 			e.printStackTrace();
 		}
 		
-		verify(repositoryMock, never()).findByCni(p1.getCni());
+		verify(repositoryMock).findByCni(p1.getCni());
 		verify(repositoryMock).save(p1);
 		assertThat(p2.getNom()).isEqualTo("Diarra");
 
